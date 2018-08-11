@@ -67,7 +67,9 @@ class Heap:
         # this is the root, it has no parent
         if idx == 0:
             return None, None
-        parent_idx = idx // 2
+        elif idx % 2 == 0:
+            idx = idx - 1
+        parent_idx = int(math.floor(idx / 2))
         parent = self.nodes[parent_idx]
         return parent, parent_idx
 
