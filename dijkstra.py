@@ -141,7 +141,7 @@ class Heap:
                 self.bubble_down(node, right_idx)
 
 
-def dijkstra(edges, source):
+def dijkstra(edges, num_vertices, source):
     heap = Heap()
     processed = [source]
     shortest_dists = defaultdict(lambda: float('inf'))
@@ -153,7 +153,7 @@ def dijkstra(edges, source):
         heap.insert(Node(label=v, key=w))
     # the nodes which the source vertex aren't connected to
     # each have the maximum possible weight (infinity)
-    for n in range(2, 201):
+    for n in range(2, num_vertices + 1):
         if n not in edges[source].keys():
             heap.insert(Node(label=n, key=float('inf')))
 
@@ -193,7 +193,7 @@ def main():
                 v2, weight = [int(n) for n in edge.split(',')]
                 edges[v1][v2] = weight
 
-        shortest_distances = dijkstra(edges, source)
+        shortest_distances = dijkstra(edges, NUM_VERTICES, source)
         for vertex in VERTICES_TO_CHECK:
             print('Shortest distance between vertices {} and {}: {}'.format(
                 source,

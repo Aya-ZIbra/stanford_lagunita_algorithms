@@ -30,7 +30,7 @@
 
 
 from collections import defaultdict
-from djikstra import Heap, Node
+from dijkstra import Heap, Node
 
 
 def prim(edges, num_nodes):
